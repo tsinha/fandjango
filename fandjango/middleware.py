@@ -63,7 +63,8 @@ class FacebookMiddleware():
             try:
                 request.facebook.signed_request = SignedRequest(
                     signed_request = request.REQUEST.get('signed_request') or request.COOKIES.get('signed_request'),
-                    application_secret_key = FACEBOOK_APPLICATION_SECRET_KEY
+                    application_secret_key = FACEBOOK_APPLICATION_SECRET_KEY,
+                    application_id = FACEBOOK_APPLICATION_ID
                 )
             except SignedRequest.Error:
                 request.facebook = False
